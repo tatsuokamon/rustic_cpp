@@ -3,14 +3,20 @@
 
 template<class T>
 struct Ok {
-    T _value;
-    Ok(T&&);
+	private:
+	    T _value;
+	    Ok(T&&);
+	public:
+	    T value() &&;
 };
 
 template<class E>
 struct Err {
-    E _value;
-    Err(E&&);
+	private:
+	    E _value;
+	public:
+	    Err(E&&);
+	    E value() &&;
 };
 
 template<class T, class E>
@@ -29,4 +35,5 @@ public:
     T unwrap() &&;
     T expect(const char*) &&;
 
+    T propagate() &&;
 };
